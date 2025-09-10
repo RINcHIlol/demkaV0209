@@ -1,0 +1,46 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="demo020925.CartWindow"
+        x:CompileBindings="False"
+        Title="CartWindow">
+        <DockPanel>
+                <Grid DockPanel.Dock="Top" Height="50" Background="Gray">
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="MainWindowButton" Content="Главная" Click="MainWindowButton_OnClick_OnClick" Width="120" Height="30" VerticalAlignment="Center" Margin="10" Grid.Column="5" IsVisible="True"/>
+                </Grid>
+                <ListBox x:Name="SubsListBox" DockPanel.Dock="Top"
+                         BorderThickness="0" Background="#F0F0F0">
+                        <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                        <Border CornerRadius="12"
+                                                Margin="10"
+                                                Padding="10"
+                                                Background="White"
+                                                BorderBrush="#DDD"
+                                                BorderThickness="1">
+                                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                        <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" />
+                                                        <TextBlock Text="{Binding Description}" FontSize="12" Foreground="Gray" TextWrapping="Wrap" HorizontalAlignment="Center" />
+                                                        <TextBlock Text="{Binding Price, StringFormat='Цена: {0} ₽'}" FontSize="14" Foreground="Gray" TextWrapping="Wrap" HorizontalAlignment="Center" />
+                                                        <TextBlock Text="{Binding DurationPerMonths, StringFormat='Срок: {0} мес.'}" FontSize="12" Foreground="Gray" TextWrapping="Wrap" HorizontalAlignment="Center" />
+                                                        <ComboBox x:Name="TrainerComboBox" ItemsSource="{Binding Trainers}" SelectedIndex="0" IsVisible="{Binding HasTrainers}">
+                                                                <ComboBox.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                                <TextBlock Text="{Binding Name}" />
+                                                                        </DataTemplate>
+                                                                </ComboBox.ItemTemplate>
+                                                        </ComboBox>
+                                                        <Button x:Name="DeleteFromCartButton" Content="Удалить" Click="DeleteFromCart_OnClick" Margin="5" VerticalAlignment="Center" Background="LightBlue" Foreground="Black"/>
+                                                        <Button x:Name="AddToCartButton" Content="Добавить" Click="AddToCart_OnClick" Margin="5" VerticalAlignment="Center" Background="LightBlue" Foreground="Black"/>
+                                                </StackPanel>
+                                        </Border>
+                                </DataTemplate>
+                        </ListBox.ItemTemplate>
+                </ListBox>
+        </DockPanel>
+</Window>

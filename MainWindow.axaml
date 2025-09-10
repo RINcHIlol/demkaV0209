@@ -1,0 +1,72 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="demo020925.MainWindow"
+        x:CompileBindings="False"
+        Title="demo020925">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Height="50" Background="Gray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="UserNameTextBlock" IsVisible="False" VerticalAlignment="Center" Margin="10,0" Grid.Column="0"/>
+            <TextBlock x:Name="UserPostTextBlock" Text="Guest" VerticalAlignment="Center" Margin="10,0" Grid.Column="1"/>
+            <Button x:Name="AuthButton" Content="Auth" Click="Auth_OnClick" Width="80" Height="30" VerticalAlignment="Center" Margin="10" Grid.Column="2" IsVisible="True"/>
+            <Button x:Name="RegButton" Content="Reg" Click="Reg_OnClick" Width="80" Height="30" VerticalAlignment="Center" Margin="10" Grid.Column="3" IsVisible="True"/>
+            <Button x:Name="LogoutButton" Content="Logout" Click="Logout_OnClick" Width="80" Height="30" VerticalAlignment="Center" Margin="10" Grid.Column="4" IsVisible="False"/>
+            <Button x:Name="CartButton" Content="Корзина" Click="CartButton_OnClick" Width="120" Height="30" VerticalAlignment="Center" Margin="10" Grid.Column="5" IsVisible="False"/>
+            <TextBox TextChanging="SearchTextBox_OnTextChanging" Width="140" Height="20" x:Name="SearchTextBox" Grid.Column="6" Margin="10"/>
+            <ComboBox x:Name="MonthsComboBox" Width="150" SelectionChanged="ComboBox_OnSelectionChanged" Grid.Column="7" Margin="10"/>
+            <ComboBox x:Name="TypeSubComboBox" Width="150" SelectionChanged="ComboBox_OnSelectionChanged" Grid.Column="8" Margin="10"/>
+            <ComboBox x:Name="CostComboBox" Width="150" SelectionChanged="ComboBox_OnSelectionChanged" Grid.Column="9" Margin="10"/>
+        </Grid>
+        <Grid DockPanel.Dock="Bottom" Height="60" Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="PreviousButton" Content="Предыдущая" Click="PreviousPage" Margin="5" Padding="10,5" VerticalAlignment="Center" Grid.Column="1"/>
+            <Button x:Name="NextButton" Content="Следующая" Click="NextPage" Margin="5" Padding="10,5" VerticalAlignment="Center" Grid.Column="2"/>
+        </Grid>
+             <ListBox x:Name="SubsListBox" DockPanel.Dock="Top"
+                      BorderThickness="0" Background="#F0F0F0">
+                 <ListBox.ItemsPanel>
+                     <ItemsPanelTemplate>
+                         <UniformGrid Columns="2" />
+                     </ItemsPanelTemplate>
+                 </ListBox.ItemsPanel>
+
+                 <ListBox.ItemTemplate>
+                     <DataTemplate>
+                         <Border CornerRadius="12"
+                                 Margin="10"
+                                 Padding="10"
+                                 Background="White"
+                                 BorderBrush="#DDD"
+                                 BorderThickness="1">
+                             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                 <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" />
+                                 <TextBlock Text="{Binding Description}" FontSize="12" Foreground="Gray" TextWrapping="Wrap" HorizontalAlignment="Center" />
+                                 <TextBlock Text="{Binding Price, StringFormat='Цена: {0} ₽'}" FontSize="14" Foreground="Gray" TextWrapping="Wrap" HorizontalAlignment="Center" />
+                                 <TextBlock Text="{Binding DurationPerMonths, StringFormat='Срок: {0} мес.'}" FontSize="12" Foreground="Gray" TextWrapping="Wrap" HorizontalAlignment="Center" />
+                                 <Button x:Name="AddToCartButton" Content="{Binding IsInCartStr}" Click="AddToCartButton_OnClick" Margin="5" VerticalAlignment="Center" Background="LightBlue" Foreground="Black"/>
+                             </StackPanel>
+                         </Border>
+                     </DataTemplate>
+                 </ListBox.ItemTemplate>
+             </ListBox>
+    </DockPanel>
+</Window>

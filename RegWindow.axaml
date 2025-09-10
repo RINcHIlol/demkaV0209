@@ -1,0 +1,22 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="demo020925.RegWindow"
+        Title="RegWindow">
+    <DockPanel Background="Bisque">
+        <Grid>
+            <Border Width="200" HorizontalAlignment="Center">
+                <StackPanel Spacing="10" VerticalAlignment="Center">
+                    <TextBox x:Name="LoginName" Watermark="login"/>
+                    <TextBox x:Name="PasswordName" Watermark="password"/>
+                    <TextBox x:Name="NameName" Watermark="name"/>
+                    <Button x:Name="TogglePasswordVisibility" Content="Show" Foreground="Black" Background="LightGray" Click="TogglePasswordVisibilityClick"/>
+                    <Button Click="Button_OnClick" Foreground="Black" Background="LightGray" Content="Зарегистрироваться"/>
+                    <TextBlock x:Name="ErrorMessage" Foreground="Red" FontSize="14" Height="40" Width="300" TextWrapping="Wrap" TextAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>
