@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Runtime.InteropServices.JavaScript;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -10,6 +11,7 @@ namespace demo020925;
 public partial class RegWindow : Window
 {
     private bool _isPasswordVisible = false;
+    public long phone;
     public RegWindow()
     {
         InitializeComponent();
@@ -21,6 +23,19 @@ public partial class RegWindow : Window
         var login = LoginName.Text;
         var password = PasswordName.Text;
         var name = NameName.Text;
+        if (long.TryParse(PhoneName.Text, out var result))
+        {
+            if (PhoneName.Text.Length != 11)
+            {
+                ErrorMessage.Text = "Телефон состоит из 11 цифр";
+                return;
+            }
+            phone = result;
+        } else
+        {
+            ErrorMessage.Text = "Телефон состоит из 11 цифр";
+            return;
+        }
 
         if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(name))
         {
@@ -41,6 +56,7 @@ public partial class RegWindow : Window
             Login = login,
             Password = password,
             Name = name,
+            Phone = phone,
             RoleId = 3,
             VisitDurationPerMonts = 0,
             Discount = 0,

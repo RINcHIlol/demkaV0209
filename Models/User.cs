@@ -21,13 +21,17 @@ public partial class User
 
     public string Password { get; set; } = null!;
 
+    public long? Phone { get; set; }
+
     public virtual Subscription? CurrentSubsription { get; set; }
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 
     public virtual Role Role { get; set; } = null!;
 
-    public virtual ICollection<SubOrder> SubOrders { get; set; } = new List<SubOrder>();
+    public virtual ICollection<SubOrder> SubOrderClients { get; set; } = new List<SubOrder>();
+
+    public virtual ICollection<SubOrder> SubOrderTrainers { get; set; } = new List<SubOrder>();
 
     public virtual ICollection<UsersBenefit> UsersBenefits { get; set; } = new List<UsersBenefit>();
 }

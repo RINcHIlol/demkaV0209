@@ -86,9 +86,15 @@ public partial class DatabaseContext : DbContext
             entity.ToTable("sub_order");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.ClientId).HasColumnName("client_id");
             entity.Property(e => e.OrderId).HasColumnName("order_id");
             entity.Property(e => e.SubId).HasColumnName("sub_id");
             entity.Property(e => e.TrainerId).HasColumnName("trainer_id");
+
+            entity.HasOne(d => d.Client).WithMany(p => p.SubOrderClients)
+                .HasForeignKey(d => d.ClientId)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("sub_order_client_id_fkey");
 
             entity.HasOne(d => d.Order).WithMany(p => p.SubOrders)
                 .HasForeignKey(d => d.OrderId)
@@ -98,8 +104,9 @@ public partial class DatabaseContext : DbContext
                 .HasForeignKey(d => d.SubId)
                 .HasConstraintName("sub_order_sub_id_fkey");
 
-            entity.HasOne(d => d.Trainer).WithMany(p => p.SubOrders)
+            entity.HasOne(d => d.Trainer).WithMany(p => p.SubOrderTrainers)
                 .HasForeignKey(d => d.TrainerId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("sub_order_trainer_id_fkey");
         });
 
@@ -158,6 +165,7 @@ public partial class DatabaseContext : DbContext
             entity.Property(e => e.Password)
                 .HasMaxLength(255)
                 .HasColumnName("password");
+            entity.Property(e => e.Phone).HasColumnName("phone");
             entity.Property(e => e.RoleId).HasColumnName("role_id");
             entity.Property(e => e.VisitDurationPerMonts).HasColumnName("visit_duration_per_monts");
 

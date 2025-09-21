@@ -5,5 +5,13 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="demo020925.AdminWindow"
         Title="AdminWindow">
-    Welcome to Avalonia admin!
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBox Watermark="Имя" x:Name="NameTextBox"/>
+        <TextBox Watermark="Логин" x:Name="LoginTextBox"/>
+        <TextBox Watermark="Пароль" x:Name="PasswordTextBox"/>
+        <TextBox Watermark="Телефон" x:Name="PhoneTextBox"/>
+        <TextBlock IsVisible="False" x:Name="ErrorTextBlock"/>
+        <Button Content="Add" Click="Add_OnClick"/>
+        <Button Content="Cancel" Click="Cancel_OnClick"/>
+    </StackPanel>
 </Window>

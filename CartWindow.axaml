@@ -28,10 +28,27 @@
                                                         <TextBlock Text="{Binding Description}" FontSize="12" Foreground="Gray" TextWrapping="Wrap" HorizontalAlignment="Center" />
                                                         <TextBlock Text="{Binding Price, StringFormat='Цена: {0} ₽'}" FontSize="14" Foreground="Gray" TextWrapping="Wrap" HorizontalAlignment="Center" />
                                                         <TextBlock Text="{Binding DurationPerMonths, StringFormat='Срок: {0} мес.'}" FontSize="12" Foreground="Gray" TextWrapping="Wrap" HorizontalAlignment="Center" />
-                                                        <ComboBox x:Name="TrainerComboBox" ItemsSource="{Binding Trainers}" SelectedIndex="0" IsVisible="{Binding HasTrainers}">
+                                                        <!-- <ComboBox x:Name="TrainerComboBox" ItemsSource="{Binding Trainers}" SelectedIndex="0" IsVisible="{Binding HasTrainers}"> -->
+                                                        <!--         <ComboBox.ItemTemplate> -->
+                                                        <!--                 <DataTemplate> -->
+                                                        <!--                         <TextBlock Text="{Binding Name}" /> -->
+                                                        <!--                 </DataTemplate> -->
+                                                        <!--         </ComboBox.ItemTemplate> -->
+                                                        <!-- </ComboBox> -->
+                                                        <ComboBox ItemsSource="{Binding Trainers}"
+                                                                  SelectedItem="{Binding SelectedTrainer, Mode=TwoWay}"
+                                                                  IsVisible="{Binding HasTrainers}">
                                                                 <ComboBox.ItemTemplate>
                                                                         <DataTemplate>
                                                                                 <TextBlock Text="{Binding Name}" />
+                                                                        </DataTemplate>
+                                                                </ComboBox.ItemTemplate>
+                                                        </ComboBox>
+                                                        <ComboBox ItemsSource="{Binding Clients}" 
+                                                                  SelectedItem="{Binding SelectedClient, Mode=TwoWay}">
+                                                                <ComboBox.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                                <TextBlock Text="{Binding Name}"/>
                                                                         </DataTemplate>
                                                                 </ComboBox.ItemTemplate>
                                                         </ComboBox>
@@ -42,5 +59,12 @@
                                 </DataTemplate>
                         </ListBox.ItemTemplate>
                 </ListBox>
+                <Grid>
+                        <Border DockPanel.Dock="Bottom">
+                                <StackPanel HorizontalAlignment="Center">
+                                        <Button Content="Купить" Click="Button_OnClick"/>
+                                </StackPanel>
+                        </Border>
+                </Grid>
         </DockPanel>
 </Window>

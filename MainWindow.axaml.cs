@@ -53,6 +53,9 @@ public partial class MainWindow : Window
         }
         
         public List<User> Trainers { get; set; } = new List<User>();
+        public User? SelectedTrainer { get; set; }
+        public List<User> Clients { get; set; } = new();
+        public User? SelectedClient { get; set; }
         public bool HasTrainers => CategoryId == 6 || CategoryId == 7 || CategoryId == 8;
     }
     
@@ -150,10 +153,14 @@ public partial class MainWindow : Window
         RegButton.IsVisible = false;
         AuthButton.IsVisible = false;
         LogoutButton.IsVisible = true;
+        ProfileButton.IsVisible = true;
         CartButton.IsVisible = true;
         switch (user.RoleId)
         {
-            case 1: UserPostTextBlock.Text = "Admin"; break;
+            case 1: 
+                UserPostTextBlock.Text = "Admin";
+                NewTrainerButton.IsVisible = true;
+                break;
             case 2: UserPostTextBlock.Text = "Trainer"; break;
             case 3: UserPostTextBlock.Text = "Customer"; break;
         }
@@ -171,6 +178,7 @@ public partial class MainWindow : Window
         RegButton.IsVisible = false;
         AuthButton.IsVisible = false;
         LogoutButton.IsVisible = true;
+        ProfileButton.IsVisible = true;
         CartButton.IsVisible = true;
         switch (user.RoleId)
         {
@@ -194,7 +202,9 @@ public partial class MainWindow : Window
 
         CartButton.IsVisible = false;
         LogoutButton.IsVisible = false;
+        ProfileButton.IsVisible = false;
         UserNameTextBlock.IsVisible = false;
+        NewTrainerButton.IsVisible = false;
         
         SubsInCart.Clear();
 
@@ -241,11 +251,23 @@ public partial class MainWindow : Window
     
     private async void CartButton_OnClick(object? sender, RoutedEventArgs e)
     {
-        CartWindow cartWindow = new CartWindow(SubsInCart);
+        CartWindow cartWindow = new CartWindow(SubsInCart, user);
         await cartWindow.ShowDialog<int>(this);
         DisplaySubscriptions();
         CartButton.Content = SubsInCart.Count > 0
             ? $"Корзина ({SubsInCart.Count})"
             : "Корзина";
+    }
+    
+    private void Profile_OnClick(object? sender, RoutedEventArgs e)
+    {
+        ProfileWindow profileWindow = new ProfileWindow(user);
+        profileWindow.ShowDialog(this);
+    }
+
+    private void NewTrainerButton_OnClick(object? sender, RoutedEventArgs e)
+    {
+        AdminWindow adminWindow = new AdminWindow();
+        adminWindow.ShowDialog(this);
     }
 }

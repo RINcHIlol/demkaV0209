@@ -14,6 +14,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -24,12 +25,14 @@
             <TextBlock x:Name="UserPostTextBlock" Text="Guest" VerticalAlignment="Center" Margin="10,0" Grid.Column="1"/>
             <Button x:Name="AuthButton" Content="Auth" Click="Auth_OnClick" Width="80" Height="30" VerticalAlignment="Center" Margin="10" Grid.Column="2" IsVisible="True"/>
             <Button x:Name="RegButton" Content="Reg" Click="Reg_OnClick" Width="80" Height="30" VerticalAlignment="Center" Margin="10" Grid.Column="3" IsVisible="True"/>
-            <Button x:Name="LogoutButton" Content="Logout" Click="Logout_OnClick" Width="80" Height="30" VerticalAlignment="Center" Margin="10" Grid.Column="4" IsVisible="False"/>
-            <Button x:Name="CartButton" Content="Корзина" Click="CartButton_OnClick" Width="120" Height="30" VerticalAlignment="Center" Margin="10" Grid.Column="5" IsVisible="False"/>
-            <TextBox TextChanging="SearchTextBox_OnTextChanging" Width="140" Height="20" x:Name="SearchTextBox" Grid.Column="6" Margin="10"/>
-            <ComboBox x:Name="MonthsComboBox" Width="150" SelectionChanged="ComboBox_OnSelectionChanged" Grid.Column="7" Margin="10"/>
-            <ComboBox x:Name="TypeSubComboBox" Width="150" SelectionChanged="ComboBox_OnSelectionChanged" Grid.Column="8" Margin="10"/>
-            <ComboBox x:Name="CostComboBox" Width="150" SelectionChanged="ComboBox_OnSelectionChanged" Grid.Column="9" Margin="10"/>
+            <Button x:Name="ProfileButton" Content="Profile" Click="Profile_OnClick" Width="80" Height="30" VerticalAlignment="Center" Margin="10" Grid.Column="4" IsVisible="False"/>
+            <Button x:Name="LogoutButton" Content="Logout" Click="Logout_OnClick" Width="80" Height="30" VerticalAlignment="Center" Margin="10" Grid.Column="5" IsVisible="False"/>
+            <Button x:Name="CartButton" Content="Корзина" Click="CartButton_OnClick" Width="120" Height="30" VerticalAlignment="Center" Margin="10" Grid.Column="6" IsVisible="False"/>
+            <Button x:Name="NewTrainerButton" Content="Add" Click="NewTrainerButton_OnClick" Width="120" Height="30" VerticalAlignment="Center" Margin="10" Grid.Column="7" IsVisible="False"/>
+            <TextBox TextChanging="SearchTextBox_OnTextChanging" Width="140" Height="20" x:Name="SearchTextBox" Grid.Column="8" Margin="10"/>
+            <ComboBox x:Name="MonthsComboBox" Width="150" SelectionChanged="ComboBox_OnSelectionChanged" Grid.Column="9" Margin="10"/>
+            <ComboBox x:Name="TypeSubComboBox" Width="150" SelectionChanged="ComboBox_OnSelectionChanged" Grid.Column="10" Margin="10"/>
+            <ComboBox x:Name="CostComboBox" Width="150" SelectionChanged="ComboBox_OnSelectionChanged" Grid.Column="11" Margin="10"/>
         </Grid>
         <Grid DockPanel.Dock="Bottom" Height="60" Background="Black">
             <Grid.ColumnDefinitions>

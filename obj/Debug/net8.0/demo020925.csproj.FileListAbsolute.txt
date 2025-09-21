@@ -146,3 +146,4 @@
 /Users/rinchi/RiderProjects/demo020925/demo020925/obj/Debug/net8.0/demo020925.csproj.Up2Date
 /Users/rinchi/RiderProjects/demo020925/demo020925/obj/Debug/net8.0/demo020925.genruntimeconfig.cache
 /Users/rinchi/RiderProjects/demo020925/demo020925/obj/Debug/net8.0/ref/demo020925.dll
+/Users/rinchi/RiderProjects/demo020925/demo020925/obj/Debug/net8.0/demo020925.sourcelink.json

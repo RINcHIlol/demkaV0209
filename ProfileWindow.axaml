@@ -1,0 +1,68 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="demo020925.ProfileWindow"
+        Background="Bisque"
+        x:CompileBindings="False"
+        Title="ProfileWindow">
+    <!-- <DockPanel> -->
+    <!--     <Grid> -->
+    <!--         <Border HorizontalAlignment="Center" VerticalAlignment="Center"> -->
+    <!--             <StackPanel Margin="15"> -->
+    <!--                 <TextBlock x:Name="NameName" Foreground="Black"/> -->
+    <!--                 <TextBlock x:Name="SubscriptionName" Foreground="Black"/> -->
+    <!--                 <TextBlock x:Name="SubscriptionTimeName" Foreground="Black"/> -->
+    <!--                 <TextBlock x:Name="TrainerNameName" Foreground="Black"/> -->
+    <!--                 <TextBlock x:Name="TrainerPhoneName" Foreground="Black"/> -->
+    <!--                 <Button Content="Назад" Click="Button_OnClick" Background="LightGray" Foreground="Black"/> -->
+    <!--             </StackPanel> -->
+    <!--         </Border> -->
+    <!--     </Grid> -->
+    <!--     <Grid IsVisible="False" DockPanel.Dock="Right"> -->
+    <!--         <ListBox x:Name="CustomerListBox"> -->
+    <!--             <ListBox.ItemTemplate> -->
+    <!--                 <DataTemplate> -->
+    <!--                     <Border> -->
+    <!--                         <StackPanel> -->
+    <!--                             <TextBlock Text="{Binding Client.Name}"/> -->
+    <!--                             <TextBlock Text="{Binding Client.Phone}"/> -->
+    <!--                             <TextBlock Text="{Binding Sub.Name}"/> -->
+    <!--                         </StackPanel> -->
+    <!--                     </Border> -->
+    <!--                 </DataTemplate> -->
+    <!--             </ListBox.ItemTemplate> -->
+    <!--         </ListBox> -->
+    <!--     </Grid> -->
+    <!-- </DockPanel> -->
+    <DockPanel>
+        <Grid DockPanel.Dock="Left">
+            <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Margin="40">
+                    <TextBlock x:Name="NameName" Foreground="Black"/>
+                    <TextBlock x:Name="SubscriptionName" Foreground="Black"/>
+                    <TextBlock x:Name="SubscriptionTimeName" Foreground="Black"/>
+                    <TextBlock x:Name="TrainerNameName" Foreground="Black"/>
+                    <TextBlock x:Name="TrainerPhoneName" Foreground="Black"/>
+                    <Button Content="Назад" Click="Button_OnClick" Background="LightGray" Foreground="Black"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid DockPanel.Dock="Right" Width="250" Background="Bisque">
+            <ListBox x:Name="CustomerListBox" IsVisible="False" Background="Bisque" Width="600">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Bisque" BorderThickness="0,0,0,1" Padding="5" Width="600" Background="Bisque">
+                            <StackPanel Width="600" Background="Bisque">
+                                <TextBlock Text="{Binding Client.Name}" Foreground="Black"/>
+                                <TextBlock Text="{Binding Client.Phone}" Foreground="Black"/>
+                                <TextBlock Text="{Binding Sub.Name}" Foreground="Black"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </DockPanel>
+</Window>

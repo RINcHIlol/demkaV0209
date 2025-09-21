@@ -12,6 +12,7 @@
                     <TextBox x:Name="LoginName" Watermark="login"/>
                     <TextBox x:Name="PasswordName" Watermark="password"/>
                     <TextBox x:Name="NameName" Watermark="name"/>
+                    <TextBox x:Name="PhoneName" Watermark="phone"/>
                     <Button x:Name="TogglePasswordVisibility" Content="Show" Foreground="Black" Background="LightGray" Click="TogglePasswordVisibilityClick"/>
                     <Button Click="Button_OnClick" Foreground="Black" Background="LightGray" Content="Зарегистрироваться"/>
                     <TextBlock x:Name="ErrorMessage" Foreground="Red" FontSize="14" Height="40" Width="300" TextWrapping="Wrap" TextAlignment="Center"/>
